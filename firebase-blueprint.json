@@ -1,0 +1,24 @@
+{
+  "entities": {
+    "Review": {
+      "title": "Review",
+      "description": "A customer review.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Customer name" },
+        "role": { "type": "string", "description": "Customer role" },
+        "company": { "type": "string", "description": "Customer company" },
+        "content": { "type": "string", "description": "Review content" },
+        "rating": { "type": "number", "description": "Rating from 1 to 5" },
+        "createdAt": { "type": "string", "format": "date-time", "description": "Creation timestamp" }
+      },
+      "required": ["name", "content", "rating", "createdAt"]
+    }
+  },
+  "firestore": {
+    "reviews": {
+      "schema": { "$ref": "Review" },
+      "description": "Collection of customer reviews."
+    }
+  }
+}
