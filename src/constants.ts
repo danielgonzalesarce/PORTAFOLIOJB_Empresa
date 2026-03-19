@@ -12,7 +12,14 @@ export const PROJECTS: Project[] = [
     technologies: ['React', 'Node.js', 'PostgreSQL', 'Cloud Deployment', 'Tailwind CSS'],
     results: 'Reducción del 40% en el tiempo de generación de reportes y eliminación total de discrepancias en el inventario.',
     imageUrl: 'https://picsum.photos/seed/erp/800/600',
-    demoUrl: 'https://example.com'
+    images: [
+      'https://picsum.photos/seed/erp1/800/600',
+      'https://picsum.photos/seed/erp2/800/600',
+      'https://picsum.photos/seed/erp3/800/600',
+      'https://picsum.photos/seed/erp4/800/600'
+    ],
+    demoUrl: 'https://example.com',
+    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
   },
   {
     id: '2',
@@ -25,7 +32,13 @@ export const PROJECTS: Project[] = [
     technologies: ['Next.js', 'Express', 'MongoDB', 'Redis', 'AWS'],
     results: 'Incremento del 25% en las ventas mensuales y liberación de 15 horas semanales del equipo comercial.',
     imageUrl: 'https://picsum.photos/seed/ecommerce/800/600',
-    demoUrl: 'https://example.com'
+    images: [
+      'https://picsum.photos/seed/ecommerce1/800/600',
+      'https://picsum.photos/seed/ecommerce2/800/600',
+      'https://picsum.photos/seed/ecommerce3/800/600'
+    ],
+    demoUrl: 'https://example.com',
+    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
   },
   {
     id: '3',
@@ -38,7 +51,13 @@ export const PROJECTS: Project[] = [
     technologies: ['Vue.js', 'Firebase', 'Google Maps API', 'Node.js'],
     results: 'Mejora del 95% en la puntualidad de entregas y reducción del 15% en costos de combustible.',
     imageUrl: 'https://picsum.photos/seed/logistics/800/600',
-    demoUrl: 'https://example.com'
+    images: [
+      'https://picsum.photos/seed/logistics1/800/600',
+      'https://picsum.photos/seed/logistics2/800/600',
+      'https://picsum.photos/seed/logistics3/800/600'
+    ],
+    demoUrl: 'https://example.com',
+    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
   },
   {
     id: '4',
@@ -51,7 +70,13 @@ export const PROJECTS: Project[] = [
     technologies: ['React', 'NestJS', 'PostgreSQL', 'Docker'],
     results: 'Aumento del 30% en la tasa de conversión de leads a visitas programadas.',
     imageUrl: 'https://picsum.photos/seed/realestate/800/600',
-    demoUrl: 'https://example.com'
+    images: [
+      'https://picsum.photos/seed/realestate1/800/600',
+      'https://picsum.photos/seed/realestate2/800/600',
+      'https://picsum.photos/seed/realestate3/800/600'
+    ],
+    demoUrl: 'https://example.com',
+    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
   },
   {
     id: '5',
@@ -64,7 +89,13 @@ export const PROJECTS: Project[] = [
     technologies: ['Next.js', 'WebRTC', 'Node.js', 'Stripe', 'AWS HIPAA'],
     results: 'Más de 5,000 consultas virtuales realizadas en el primer semestre y reducción del 40% en inasistencias.',
     imageUrl: 'https://picsum.photos/seed/health/800/600',
-    demoUrl: 'https://example.com'
+    images: [
+      'https://picsum.photos/seed/health1/800/600',
+      'https://picsum.photos/seed/health2/800/600',
+      'https://picsum.photos/seed/health3/800/600'
+    ],
+    demoUrl: 'https://example.com',
+    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
   },
   {
     id: '6',
@@ -77,7 +108,13 @@ export const PROJECTS: Project[] = [
     technologies: ['React', 'IndexedDB', 'GraphQL', 'Node.js'],
     results: 'Cero interrupciones en ventas por caídas de red y cuadre de caja automatizado en 5 minutos.',
     imageUrl: 'https://picsum.photos/seed/pos/800/600',
-    demoUrl: 'https://example.com'
+    images: [
+      'https://picsum.photos/seed/pos1/800/600',
+      'https://picsum.photos/seed/pos2/800/600',
+      'https://picsum.photos/seed/pos3/800/600'
+    ],
+    demoUrl: 'https://example.com',
+    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
   },
   {
     id: '7',
@@ -90,7 +127,13 @@ export const PROJECTS: Project[] = [
     technologies: ['Vue.js', 'Laravel', 'MySQL', 'AWS S3'],
     results: 'Ahorro del 60% en costos de capacitación y reducción del tiempo de onboarding a la mitad.',
     imageUrl: 'https://picsum.photos/seed/education/800/600',
-    demoUrl: 'https://example.com'
+    images: [
+      'https://picsum.photos/seed/education1/800/600',
+      'https://picsum.photos/seed/education2/800/600',
+      'https://picsum.photos/seed/education3/800/600'
+    ],
+    demoUrl: 'https://example.com',
+    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
   },
   {
     id: '8',
@@ -103,7 +146,13 @@ export const PROJECTS: Project[] = [
     technologies: ['React', 'D3.js', 'Python', 'FastAPI'],
     results: 'Visibilidad financiera en tiempo real, mejorando la liquidez de la empresa en un 15%.',
     imageUrl: 'https://picsum.photos/seed/finance/800/600',
-    demoUrl: 'https://example.com'
+    images: [
+      'https://picsum.photos/seed/finance1/800/600',
+      'https://picsum.photos/seed/finance2/800/600',
+      'https://picsum.photos/seed/finance3/800/600'
+    ],
+    demoUrl: 'https://example.com',
+    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
   },
   {
     id: '9',
@@ -116,7 +165,13 @@ export const PROJECTS: Project[] = [
     technologies: ['Next.js', 'Supabase', 'Stripe Connect', 'Tailwind CSS'],
     results: 'Más de 200 vendedores activos y un crecimiento mensual en ventas del 20%.',
     imageUrl: 'https://picsum.photos/seed/marketplace/800/600',
-    demoUrl: 'https://example.com'
+    images: [
+      'https://picsum.photos/seed/marketplace1/800/600',
+      'https://picsum.photos/seed/marketplace2/800/600',
+      'https://picsum.photos/seed/marketplace3/800/600'
+    ],
+    demoUrl: 'https://example.com',
+    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
   },
   {
     id: '10',
@@ -129,7 +184,13 @@ export const PROJECTS: Project[] = [
     technologies: ['React', 'Node.js', 'InfluxDB', 'MQTT', 'AWS IoT'],
     results: 'Reducción del 35% en mantenimientos correctivos y aumento de la vida útil de la flota.',
     imageUrl: 'https://picsum.photos/seed/iot/800/600',
-    demoUrl: 'https://example.com'
+    images: [
+      'https://picsum.photos/seed/iot1/800/600',
+      'https://picsum.photos/seed/iot2/800/600',
+      'https://picsum.photos/seed/iot3/800/600'
+    ],
+    demoUrl: 'https://example.com',
+    videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
   },
   {
     id: '11',
@@ -142,6 +203,10 @@ export const PROJECTS: Project[] = [
     technologies: ['React', 'Node.js', 'PostgreSQL', 'AWS'],
     results: 'Reducción del 50% en el tiempo de aprobación de tesis.',
     imageUrl: 'https://picsum.photos/seed/edu/800/600',
+    images: [
+      'https://picsum.photos/seed/edu1/800/600',
+      'https://picsum.photos/seed/edu2/800/600'
+    ],
     demoUrl: 'https://example.com',
     videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
   },
@@ -156,6 +221,10 @@ export const PROJECTS: Project[] = [
     technologies: ['TypeScript', 'Express', 'MongoDB', 'Docker'],
     results: 'Optimización del 30% en la gestión de compras y reducción de pérdidas por inventario.',
     imageUrl: 'https://picsum.photos/seed/inv/800/600',
+    images: [
+      'https://picsum.photos/seed/inv1/800/600',
+      'https://picsum.photos/seed/inv2/800/600'
+    ],
     demoUrl: 'https://example.com',
     videoUrl: 'https://www.youtube.com/watch?v=jNQXAC9IVRw'
   }

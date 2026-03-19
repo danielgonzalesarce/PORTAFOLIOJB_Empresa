@@ -9,6 +9,7 @@ export interface Project {
   technologies: string[];
   results: string;
   imageUrl: string;
+  images?: string[];
   demoUrl: string;
   videoUrl?: string;
 }

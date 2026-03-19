@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { db } from '../firebase';
+import { db, handleFirestoreError, OperationType } from '../firebase';
 import { motion } from 'motion/react';
 import { Star } from 'lucide-react';
 
@@ -36,8 +36,7 @@ const ReviewForm = () => {
       setRating(0);
       alert('¡Gracias por tu reseña!');
     } catch (error) {
-      console.error('Error adding review: ', error);
-      alert('Hubo un error al enviar tu reseña.');
+      handleFirestoreError(error, OperationType.WRITE, 'reviews');
     } finally {
       setIsSubmitting(false);
     }

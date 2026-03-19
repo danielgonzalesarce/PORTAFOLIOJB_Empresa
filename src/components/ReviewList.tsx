@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { collection, query, orderBy, onSnapshot } from 'firebase/firestore';
-import { db } from '../firebase';
+import { db, handleFirestoreError, OperationType } from '../firebase';
 import { Review } from '../types';
 import { motion } from 'motion/react';
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
@@ -18,6 +18,8 @@ const ReviewList = () => {
         ...doc.data(),
       })) as Review[];
       setReviews(reviewsData);
+    }, (error) => {
+      handleFirestoreError(error, OperationType.GET, 'reviews');
     });
     return () => unsubscribe();
   }, []);

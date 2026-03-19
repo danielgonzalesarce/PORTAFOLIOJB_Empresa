@@ -1,7 +1,10 @@
 {
-  "apiKey": "AIzaSyD-YOUR-API-KEY",
-  "authDomain": "storyhaven-480914.firebaseapp.com",
-  "projectId": "storyhaven-480914",
-  "appId": "1:480914:web:YOUR-APP-ID",
-  "firestoreDatabaseId": "(default)"
+  "projectId": "portafoliojb-7b25d",
+  "appId": "1:201812636618:web:ece5bc6f26079008785533",
+  "apiKey": "AIzaSyD39p5S0qI0DCt3zVJeCoHi0e_CE6RVxHM",
+  "authDomain": "portafoliojb-7b25d.firebaseapp.com",
+  "firestoreDatabaseId": "ai-studio-a6992bfa-be18-4ba3-89af-b2530f28486e",
+  "storageBucket": "portafoliojb-7b25d.firebasestorage.app",
+  "messagingSenderId": "201812636618",
+  "measurementId": ""
 }
