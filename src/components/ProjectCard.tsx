@@ -1,101 +1,99 @@
-import React from 'react';
-import { motion } from 'motion/react';
-import { ExternalLink, Layers } from 'lucide-react';
-import { Project } from '../types';
+import React from "react";
+import { motion } from "motion/react";
+import { Play, ExternalLink } from "lucide-react";
+import { Project } from "../types";
 
 interface ProjectCardProps {
   project: Project;
   onOpen: (project: Project) => void;
+  index: number; // Necesario para el efecto de apilamiento
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpen }) => {
-  const getYouTubeEmbedUrl = (url: string) => {
-    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-    const match = url.match(regExp);
-    return match && match[2].length === 11 ? `https://www.youtube.com/embed/${match[2]}` : null;
+const ProjectCard: React.FC<ProjectCardProps> = ({
+  project,
+  onOpen,
+  index,
+}) => {
+  // Mapeo de colores basado en tu paleta oficial
+  const colorMap: Record<string, string> = {
+    Logística: "#41C4C0", // Turquesa
+    "E-commerce": "#CE0B19", // Rojo Persa
+    Gimnasio: "#FDB907", // Amarillo Hansa
+    RRHH: "#096ACC", // Azul Marino
+    SaaS: "#123498", // Azul Principal
   };
 
-  const videoEmbedUrl = project.videoUrl ? getYouTubeEmbedUrl(project.videoUrl) : null;
+  const accentColor =
+    project.accentColor || colorMap[project.category] || "#123498";
+
+  // Obtener imágenes para los mockups
+  const laptopImg =
+    project.imageUrl ||
+    (project.images && project.images[0]) ||
+    "https://picsum.photos/800/450";
+  const mobileImg =
+    (project.images && project.images[1]) || "https://picsum.photos/400/800";
 
   return (
-    <motion.div 
-      whileHover={{ y: -10 }}
-      className="group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all flex flex-col h-full"
+    <motion.div
+      initial={{ y: 30, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true, margin: "-60px" }}
+      onClick={() => onOpen(project)}
+      className="group relative bg-slate-50 cursor-pointer rounded-2xl lg:rounded-4xl overflow-hidden shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-slate-100 flex flex-col h-full transition-all duration-300"
     >
-      <div className="relative overflow-hidden aspect-video">
-        {videoEmbedUrl ? (
-          <iframe
-            src={videoEmbedUrl}
-            className="w-full h-full"
-            title={project.name}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        ) : (
-          <motion.img
-            src={project.imageUrl}
-            alt={project.name}
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.5 }}
-            className="w-full h-full object-cover"
-            referrerPolicy="no-referrer"
-          />
-        )}
-        <div className="absolute top-4 left-4">
-          <span className="bg-white/90 backdrop-blur-sm text-jb-blue text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+      {/* VISUALES PRINCIPALES */}
+      <div className="relative w-full pt-[65%] flex items-center justify-center overflow-hidden">
+        {/* Fondo decorativo */}
+        <div
+          className="absolute inset-0 opacity-[0.05] group-hover:opacity-[0.08] transition-opacity duration-500"
+          style={{ backgroundColor: accentColor }}
+        />
+
+        {/* Contenedor Mockups */}
+        <div className="absolute inset-0 flex items-center justify-center p-6 lg:p-10 pointer-events-none">
+          {/* Laptop Mockup */}
+          <motion.div className="relative z-10 w-[85%] drop-shadow-xl group-hover:scale-[1.03] transition-transform duration-700 ease-out will-change-transform">
+            <div className="bg-slate-900 rounded-lg lg:rounded-xl p-1 lg:p-1.5 border-[3px] border-slate-700 shadow-xl">
+              <img
+                src={laptopImg}
+                alt={`${project.name} Desktop`}
+                className="rounded lg:rounded-lg w-full aspect-video object-cover"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+          </motion.div>
+
+          {/* Mobile Mockup - Flotando */}
+          <motion.div className="absolute bottom-4 right-6 lg:bottom-6 lg:right-10 z-20 w-[24%] lg:w-[22%] drop-shadow-2xl group-hover:-translate-y-3 transition-transform duration-700 ease-out will-change-transform">
+            <div className="bg-slate-900 rounded-[12px] lg:rounded-[20px] p-1 border-2 border-slate-700 aspect-9/19 shadow-2xl overflow-hidden">
+              <img
+                src={mobileImg}
+                alt={`${project.name} Mobile`}
+                className="w-full h-full object-cover rounded-[8px] lg:rounded-[14px]"
+                referrerPolicy="no-referrer"
+              />
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Gradiente Oscuro Abajo para el texto */}
+        <div className="absolute bottom-0 left-0 right-0 h-[60%] lg:h-1/2 bg-linear-to-t from-slate-900/95 via-slate-900/40 to-transparent z-30 pointer-events-none" />
+      </div>
+
+      {/* TEXTO Y CATEGORÍA SUPERPUESTO */}
+      <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8 z-40 flex flex-col justify-end pointer-events-none">
+        <div className="flex items-center gap-3 mb-3">
+          <span
+            className="px-4 py-1.5 rounded-full text-[10px] font-bold text-white tracking-widest uppercase shadow-sm"
+            style={{ backgroundColor: accentColor }}
+          >
             {project.category}
           </span>
         </div>
-        <div className="absolute inset-0 bg-jb-blue/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => onOpen(project)}
-            className="bg-white text-jb-blue px-6 py-2 rounded-full font-bold hover:bg-jb-orange hover:text-white transition-colors"
-          >
-            Ver Detalles
-          </motion.button>
-        </div>
-      </div>
-      
-      <div className="p-6 flex-grow flex flex-col">
-        <div className="flex justify-between items-start mb-3">
-          <h4 className="text-xl font-bold text-gray-900 group-hover:text-jb-blue transition-colors">
-            {project.name}
-          </h4>
-          <motion.div
-            animate={{ rotate: [0, 10, -10, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Layers className="text-jb-teal flex-shrink-0 ml-2" size={20} />
-          </motion.div>
-        </div>
-        
-        <p className="text-gray-600 text-sm mb-6 line-clamp-2">
-          {project.shortDescription}
-        </p>
-        
-        <div className="mt-auto">
-          <div className="flex flex-wrap gap-2 mb-6">
-            {project.technologies.map((tech) => (
-              <span key={tech} className="text-[10px] font-bold uppercase tracking-wider bg-jb-blue/10 text-jb-blue px-2 py-1 rounded">
-                {tech}
-              </span>
-            ))}
-          </div>
-          
-          <div className="flex gap-3">
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => onOpen(project)}
-              className="flex-1 inline-flex items-center justify-center gap-2 bg-jb-blue text-white py-3 rounded-xl font-bold hover:bg-jb-navy transition-colors text-sm"
-            >
-              Ver Proyecto
-              {project.demoUrl ? <ExternalLink size={16} /> : null}
-            </motion.button>
-          </div>
-        </div>
+        <h3 className="text-2xl md:text-3xl lg:text-2xl font-extrabold text-white leading-tight font-montserrat drop-shadow-lg line-clamp-2 group-hover:text-jb-orange transition-colors duration-300">
+          {project.name}
+        </h3>
       </div>
     </motion.div>
   );

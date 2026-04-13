@@ -1,214 +1,231 @@
-import React from 'react';
-import { motion, useMotionValue, useTransform, useSpring } from 'motion/react';
-import { ChevronRight, ShieldCheck, Star, Zap, Code, Database, Cloud, Smartphone, Cpu } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { ChevronRight } from "lucide-react";
+
+// ── Imágenes de fondo (tecnología / oficinas modernas) ───────────────────────
+const BG_IMAGES = [
+  "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1920&q=80",
+];
+
+const INTERVAL_MS = 4000;
 
 const Hero = () => {
-  // 3D Tilt Effect Logic
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
-  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"]);
+  const [current, setCurrent] = useState(0);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
-    x.set(xPct);
-    y.set(yPct);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  // Floating Icons Data
-  const floatingIcons = [
-    { Icon: Code, top: '15%', left: '5%', delay: 0, color: 'text-jb-orange' },
-    { Icon: Cloud, top: '10%', right: '10%', delay: 1, color: 'text-jb-teal' },
-    { Icon: Database, bottom: '20%', left: '10%', delay: 2, color: 'text-white/50' },
-    { Icon: Smartphone, bottom: '15%', right: '5%', delay: 1.5, color: 'text-jb-orange' },
-    { Icon: Cpu, top: '45%', left: '45%', delay: 0.5, color: 'text-jb-teal' },
-  ];
+  // Auto-avance del slider
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % BG_IMAGES.length);
+    }, INTERVAL_MS);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden bg-jb-blue perspective-1000">
-      {/* Animated Background Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,#000_70%,transparent_100%)]"></div>
-      
-      {/* Animated Glowing Orbs */}
-      <motion.div 
-        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-jb-teal/20 blur-[120px] rounded-full pointer-events-none"
-      />
-      <motion.div 
-        animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.4, 0.2] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-jb-orange/10 blur-[150px] rounded-full pointer-events-none"
-      />
-
-      {/* Floating Tech Icons */}
-      {floatingIcons.map((item, index) => (
-        <motion.div
-          key={index}
-          className={`absolute ${item.color} opacity-30 pointer-events-none hidden md:block`}
-          style={{ top: item.top, left: item.left, right: item.right, bottom: item.bottom }}
-          animate={{ 
-            y: [0, -20, 0],
-            rotate: [0, 10, -10, 0],
-            scale: [1, 1.1, 1]
-          }}
-          transition={{ 
-            duration: 5, 
-            repeat: Infinity, 
-            delay: item.delay,
-            ease: "easeInOut" 
-          }}
-        >
-          <item.Icon size={32} />
-        </motion.div>
-      ))}
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-          
-          {/* Left Column: Text & CTA */}
-          <div className="relative z-20">
-            {/* Trust Badge */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, type: "spring" }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-medium mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.1)]"
-            >
-              <ShieldCheck size={18} className="text-jb-teal" />
-              <span>Consultora Tecnológica Certificada</span>
-            </motion.div>
-
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.1] mb-6 tracking-tight"
-            >
-              Tu guía hacia el <br className="hidden md:block" /> éxito <span className="text-jb-orange relative inline-block">
-                empresarial
-                {/* Animated Underline SVG */}
-                <motion.svg 
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 1, delay: 1, ease: "easeInOut" }}
-                  className="absolute w-full h-4 -bottom-2 left-0 text-jb-orange" 
-                  viewBox="0 0 100 10" 
-                  preserveAspectRatio="none"
-                >
-                  <motion.path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent" strokeLinecap="round" />
-                </motion.svg>
-              </span> <br className="hidden md:block" /> y académico
-            </motion.h1>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
-              className="text-lg md:text-xl text-white/80 mb-10 max-w-xl leading-relaxed font-light"
-            >
-              Transformamos empresas mediante estrategias personalizadas que impulsan el crecimiento sostenible y el éxito a largo plazo. Soluciones integrales basadas en compromiso, innovación y excelencia.
-            </motion.p>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4 mb-12"
-            >
-              <a
-                href="#proyectos"
-                className="group relative inline-flex items-center justify-center px-8 py-4 bg-jb-orange text-white rounded-xl font-bold text-lg overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(242,125,38,0.4)]"
-              >
-                {/* Shine Effect */}
-                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent group-hover:animate-[shine_1.5s_ease-in-out_infinite]"></div>
-                <span className="relative flex items-center">
-                  Ver Proyectos
-                  <ChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-                </span>
-              </a>
-              <a
-                href="#contacto"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white/5 border border-white/20 text-white rounded-xl font-bold text-lg hover:bg-white/10 transition-all backdrop-blur-md hover:scale-105"
-              >
-                Solicitar Asesoría
-              </a>
-            </motion.div>
-          </div>
-
-          {/* Right Column: 3D Interactive Visuals */}
+    <section
+      id="inicio"
+      className="relative min-h-[95vh] flex items-center pt-24 pb-16 overflow-hidden bg-jb-blue"
+    >
+      {/* ══════════════════════════════════════════════════════════════════
+          LAYER 1 — Background Image Slider (crossfade)
+      ══════════════════════════════════════════════════════════════════ */}
+      <div className="absolute inset-0 z-0">
+        <AnimatePresence initial={false}>
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="hidden lg:block relative perspective-[2000px] h-[600px] flex items-center justify-center"
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
+            key={current}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.8, ease: "easeInOut" }}
+            className="absolute inset-0"
           >
-            {/* 3D Container */}
-            <motion.div 
-              style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-              className="relative w-full max-w-lg mx-auto"
+            {/* Zoom-out sutil para dar sensación de movimiento */}
+            <motion.div
+              initial={{ scale: 1.08 }}
+              animate={{ scale: 1 }}
+              transition={{
+                duration: INTERVAL_MS / 1000 + 1.8,
+                ease: "linear",
+              }}
+              className="absolute inset-0"
             >
-              {/* Main Image Card */}
-              <div 
-                className="relative rounded-2xl overflow-hidden border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-jb-navy"
-                style={{ transform: "translateZ(0px)" }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-tr from-jb-blue/40 to-transparent z-10 mix-blend-overlay"></div>
-                <img
-                  src="https://media.istockphoto.com/id/1830163120/es/foto/grupo-de-programadores-inform%C3%A1ticos-hablando-mientras-trabajan-en-la-oficina-de-ti.jpg?s=612x612&w=0&k=20&c=6Ldjzq8HTSQbdai_zCqPxKSK8gz1IuWJ7nKKCkP69RQ="
-                  alt="Equipo de programadores trabajando"
-                  className="w-full h-auto object-cover opacity-90"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              
-              {/* Floating Metric Card (Parallax Effect) */}
-              <motion.div 
-                style={{ transform: "translateZ(80px)" }}
-                className="absolute -bottom-10 -left-10 z-20 bg-white/10 backdrop-blur-xl border border-white/20 p-6 rounded-2xl shadow-[0_30px_60px_rgba(0,0,0,0.4)] flex items-center gap-5"
-              >
-                <div className="relative w-16 h-16 bg-jb-teal/20 rounded-full flex items-center justify-center text-jb-teal border border-jb-teal/30">
-                  <motion.div 
-                    animate={{ rotate: 360 }} 
-                    transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                    className="absolute inset-0 border-2 border-dashed border-jb-teal/40 rounded-full"
-                  />
-                  <Zap size={32} />
-                </div>
-                <div>
-                  <p className="text-sm text-white/80 font-medium uppercase tracking-wider mb-1">Rendimiento</p>
-                  <p className="text-4xl font-bold text-white">99.9%</p>
-                </div>
-              </motion.div>
-
-              {/* Secondary Floating Element */}
-              <motion.div 
-                style={{ transform: "translateZ(50px)" }}
-                className="absolute -top-8 -right-8 z-20 bg-jb-navy/80 backdrop-blur-md border border-white/10 p-4 rounded-xl shadow-2xl flex items-center gap-3"
-              >
-                <div className="w-3 h-3 bg-jb-orange rounded-full animate-pulse"></div>
-                <span className="text-white font-medium text-sm">Sistemas Activos</span>
-              </motion.div>
+              <img
+                src={BG_IMAGES[current]}
+                alt=""
+                aria-hidden="true"
+                className="w-full h-full object-cover object-center"
+                draggable={false}
+              />
             </motion.div>
-
           </motion.div>
+        </AnimatePresence>
+      </div>
 
+      {/* ══════════════════════════════════════════════════════════════════
+          LAYER 2 — Overlay degradado asimétrico
+          Más opaco abajo-izquierda (texto), más transparente arriba-derecha
+      ══════════════════════════════════════════════════════════════════ */}
+      <div
+        className="absolute inset-0 z-10 pointer-events-none"
+        style={{
+          background: `
+            linear-gradient(
+              115deg,
+              rgba(18, 52, 152, 0.93) 0%,
+              rgba(18, 52, 152, 0.82) 30%,
+              rgba(18, 52, 152, 0.60) 55%,
+              rgba(18, 52, 152, 0.30) 75%,
+              rgba(18, 52, 152, 0.12) 100%
+            ),
+            linear-gradient(
+              to top,
+              rgba(18, 52, 152, 0.70) 0%,
+              transparent 45%
+            )
+          `,
+        }}
+      />
+
+      {/* ══════════════════════════════════════════════════════════════════
+          LAYER 3 — Contenido
+      ══════════════════════════════════════════════════════════════════ */}
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+        {/* Etiqueta superior */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+          className="mb-1 md:mb-1"
+        >
+          <span className="text-jb-orange font-bold uppercase tracking-[0.3em] text-xs md:text-sm">
+            Diseño & Desarrollo Web
+          </span>
+        </motion.div>
+
+        {/* Título gigante */}
+        <motion.h1 className="font-extrabold text-white leading-[0.9] tracking-tighter mb-8 font-montserrat flex flex-col">
+          {/* "Creamos" */}
+          <motion.span
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.75,
+              ease: [0.22, 1, 0.36, 1],
+              delay: 0.2,
+            }}
+            className="text-[3rem] md:text-[5rem] lg:text-[7rem]"
+          >
+            Creamos
+          </motion.span>
+
+          {/* "Experiencias" con gradiente animado */}
+          <motion.span
+            initial={{ opacity: 0, y: 40 }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+            }}
+            transition={{
+              opacity: {
+                duration: 0.75,
+                ease: [0.22, 1, 0.36, 1],
+                delay: 0.35,
+              },
+              y: { duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: 0.35 },
+              backgroundPosition: {
+                duration: 6,
+                repeat: Infinity,
+                ease: "linear",
+                delay: 0.35,
+              },
+            }}
+            className="text-transparent bg-clip-text bg-[linear-gradient(90deg,#FFFFFF,#aaaaaa,#aaaaaa,#FFFFFF)] bg-size-[200%_auto] text-[3.8rem] md:text-[7.5rem] lg:text-[9rem] pb-2 md:pb-6"
+          >
+            Experiencias
+          </motion.span>
+
+          {/* "Digitales." */}
+          <motion.span
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.75,
+              ease: [0.22, 1, 0.36, 1],
+              delay: 0.5,
+            }}
+            className="text-[3rem] md:text-[5rem] lg:text-[7rem]"
+          >
+            Digitales.
+          </motion.span>
+        </motion.h1>
+
+        {/* Descripción y botones */}
+        <div className="max-w-2xl">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, ease: "easeOut", delay: 0.65 }}
+            className="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed font-lato"
+          >
+            Te ayudamos con la estética y potencia tecnológica para tu negocio.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75, ease: "easeOut", delay: 0.8 }}
+            className="flex flex-col sm:flex-row items-start gap-4"
+          >
+            <a
+              href="#proyectos"
+              className="group relative inline-flex items-center justify-center px-8 py-4 w-full sm:w-auto bg-jb-orange text-white rounded-2xl font-bold text-lg overflow-hidden transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(242,125,38,0.5)] font-montserrat"
+            >
+              <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/30 to-transparent group-hover:animate-[shine_1.5s_ease-in-out_infinite]" />
+              <span className="relative flex items-center">
+                Ver Proyectos
+                <ChevronRight
+                  className="ml-2 group-hover:translate-x-1 transition-transform"
+                  size={20}
+                />
+              </span>
+            </a>
+
+            <a
+              href="#contacto"
+              className="inline-flex items-center justify-center px-8 py-4 w-full sm:w-auto bg-white/10 border border-white/20 text-white rounded-2xl font-bold text-lg hover:bg-white/20 transition-all backdrop-blur-md hover:scale-105 font-montserrat"
+            >
+              Solicitar Asesoría
+            </a>
+          </motion.div>
         </div>
+
+        {/* Dots del slider */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.1, duration: 0.6 }}
+          className="flex items-center gap-2 mt-14"
+        >
+          {BG_IMAGES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              aria-label={`Imagen ${i + 1}`}
+              className="transition-all duration-500 rounded-full"
+              style={{
+                width: i === current ? "28px" : "8px",
+                height: "8px",
+                background:
+                  i === current
+                    ? "rgba(242, 125, 38, 1)" // jb-orange
+                    : "rgba(255, 255, 255, 0.35)",
+              }}
+            />
+          ))}
+        </motion.div>
       </div>
     </section>
   );
