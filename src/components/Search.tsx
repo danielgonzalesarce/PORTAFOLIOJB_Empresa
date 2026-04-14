@@ -183,7 +183,7 @@ function ResultCard({
       {/* Arrow */}
       <ArrowUpRight
         size={16}
-        className={`flex-shrink-0 transition-all duration-200 ${
+        className={`shrink-0 transition-all duration-200 ${
           isHighlighted
             ? "text-jb-orange translate-x-0.5 -translate-y-0.5"
             : "text-slate-300 group-hover:text-jb-orange group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -319,7 +319,7 @@ export default function Search({ isOpen, onClose }: SearchProps) {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 z-[60] bg-jb-blue/40 backdrop-blur-sm"
+            className="fixed inset-0 z-60 bg-jb-blue/40 backdrop-blur-sm"
             onClick={onClose}
             aria-hidden="true"
           />
@@ -332,7 +332,7 @@ export default function Search({ isOpen, onClose }: SearchProps) {
             animate="visible"
             exit="exit"
             className="
-              fixed z-[70]
+              fixed z-70
               top-4 left-1/2 -translate-x-1/2
               w-[calc(100%-2rem)] max-w-2xl
               bg-white/97 backdrop-blur-xl
@@ -345,14 +345,14 @@ export default function Search({ isOpen, onClose }: SearchProps) {
           >
             {/* ── Input row ─────────────────────────────────────────────── */}
             <div className="flex items-center gap-3 px-5 py-4 border-b border-slate-100">
-              <SearchIcon size={18} className="flex-shrink-0 text-jb-blue/50" />
+              <SearchIcon size={18} className="shrink-0 text-jb-blue/50" />
               <input
                 ref={inputRef}
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Buscar proyectos, tecnologías..."
+                placeholder="Buscar proyectos..."
                 className="
                   flex-1 bg-transparent text-jb-blue placeholder-slate-300
                   text-[15px] font-medium font-montserrat
@@ -367,7 +367,7 @@ export default function Search({ isOpen, onClose }: SearchProps) {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.7 }}
                   onClick={() => setQuery("")}
-                  className="flex-shrink-0 w-6 h-6 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-colors"
+                  className="shrink-0 w-6 h-6 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center transition-colors"
                   aria-label="Limpiar búsqueda"
                 >
                   <X size={12} className="text-slate-500" />
@@ -375,7 +375,7 @@ export default function Search({ isOpen, onClose }: SearchProps) {
               )}
               <button
                 onClick={onClose}
-                className="flex-shrink-0 ml-1 text-xs font-bold text-slate-400 hover:text-jb-blue transition-colors font-montserrat hidden sm:block"
+                className="shrink-0 ml-1 text-xs font-bold text-slate-400 hover:text-jb-blue transition-colors font-montserrat hidden sm:block"
               >
                 ESC
               </button>
@@ -383,16 +383,13 @@ export default function Search({ isOpen, onClose }: SearchProps) {
 
             {/* ── Category filters ──────────────────────────────────────── */}
             <div className="flex items-center gap-1.5 px-5 py-3 border-b border-slate-50 overflow-x-auto scrollbar-none">
-              <Layers
-                size={12}
-                className="flex-shrink-0 text-slate-300 mr-0.5"
-              />
+              <Layers size={12} className="shrink-0 text-slate-300 mr-0.5" />
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
                   className={`
-                    flex-shrink-0 text-[11px] font-bold px-3 py-1.5 rounded-lg
+                    shrink-0 text-[11px] font-bold px-3 py-1.5 rounded-lg
                     transition-all duration-150 font-montserrat border
                     ${
                       activeCategory === cat

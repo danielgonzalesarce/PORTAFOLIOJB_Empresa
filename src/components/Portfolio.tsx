@@ -275,9 +275,8 @@ const Portfolio = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-4xl md:text-5xl font-bold text-jb-blue mb-4 font-montserrat">
-              Soluciones{" "}
-              <span className="text-jb-turquoise">SaaS & Enterprise</span>
+            <h3 className="text-4xl md:text-5xl font-bold text-jb-blue font-montserrat">
+              Nuestros <span className="text-jb-orange">Proyectos</span>
             </h3>
           </motion.div>
         </div>
