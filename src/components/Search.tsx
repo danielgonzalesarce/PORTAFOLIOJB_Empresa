@@ -7,7 +7,7 @@ import {
   Tag,
   Layers,
 } from "lucide-react";
-import { PROJECTS } from "../constants";
+import { PROJECTS } from "../data/projects";
 import { Project } from "../types";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -161,7 +161,7 @@ function ResultCard({
       {/* Thumbnail */}
       <div className="relative shrink-0 w-14 h-14 rounded-lg overflow-hidden bg-slate-100">
         <img
-          src={project.imageUrl}
+          src={project.laptopImg}
           alt={project.name}
           className="w-full h-full object-cover"
           loading="lazy"

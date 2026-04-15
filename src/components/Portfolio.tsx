@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "motion/react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-import { PROJECTS } from "../constants";
+import { PROJECTS } from "../data/projects";
 import ProjectCard from "./ProjectCard";
 import ProjectDetailModal from "./ProjectDetailModal";
 import { Project } from "../types";
