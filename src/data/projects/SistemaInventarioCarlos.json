@@ -1,0 +1,24 @@
+{
+  "id": "sicap-carlos",
+  "name": "Sistema de Asistencia y Planillas",
+  "category": "ERP y Logística",
+  "accentColor": "#096ACC",
+  "shortDescription": "Plataforma optimizada para gestionar la asistencia, configurar horarios personalizados y emitir boletas de pago para empresas de hasta 100 trabajadores.",
+  "problem": "¿Pierdes horas valiosas calculando tardanzas, horas extras y descuentos de ley a fin de mes? El control manual o en Excel genera errores en los pagos, dificulta el seguimiento de horarios complejos, impide notificar avisos importantes al personal de forma oportuna y carece de un registro de quién modifica la información sensible.",
+  "solution": "Un sistema centralizado con un dashboard intuitivo. Permite configurar la estructura de la empresa (áreas y cargos) y asignar horarios (normales o por bloques). Facilita la edición de sueldos y descuentos de ley para emitir boletas de pago precisas. Además, incluye envío de notificaciones (a uno, varios o todos los empleados) y un registro de auditoría para ver qué usuario realizó ediciones.",
+  "benefits": "- Control correcto y eficiente de la asistencia diaria del personal.\n- Generación de reportes y boletas de pago rápidos y sin errores de cálculo.\n- Adaptabilidad total a las dinámicas de la empresa con horarios personalizados.\n- Mejora en la comunicación interna mediante el módulo de notificaciones.\n- Seguridad y transparencia total al mantener un historial de las ediciones realizadas en el sistema.",
+  "technologies": ["React", "Node.js", "SQL", "Tailwind CSS"],
+  "laptopImg": "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776267407/pantallaPC_drtvb2.png",
+  "mobileImg": "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776267407/pantallaMovil_jqrqny.png",
+  "images": [
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776266886/GEstionAsistencias_w9swuf.png",
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776266886/Visualizaci%C3%B3n_de_Boletas_anici2.png",
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776266885/marcaje_nklizd.png",
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776266885/P%C3%A1ginadeConfiguraci%C3%B3n_ohxno2.png",
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776266885/gestionTrabjadores_kdy71h.png",
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776266885/dashboard_nadsfz.png",
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776266885/Visualizacion_de_alertas_aa6egi.png"
+  ],
+  "demoUrl": "https://demo.jbsoluciones.com/rrhh",
+  "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+}

@@ -39,7 +39,6 @@ const itemVariants = {
   },
 };
 
-// ─── Glass card base ─────────────────────────────────────────────────────────
 const GLASS_BASE = `
   !relative !overflow-hidden
   !bg-white/10 !border-white/15
@@ -48,16 +47,11 @@ const GLASS_BASE = `
   transition-all duration-300 ease-out
 `;
 
-// ─── Hover unificado para TODAS las tarjetas del grid ────────────────────────
-// Una sola fuente de verdad: escala leve + sombra negra profunda.
-// El "shadow-none!" en los BentoGridItem cancela el hover:shadow-xl nativo
-// de Aceternity antes de aplicar nuestra sombra personalizada.
 const CARD_HOVER = `
   hover:scale-[1.025]
   hover:shadow-[0_18px_45px_rgba(0,0,0,0.45)]
 `;
 
-// ─── Mascot header — SIN glow detrás ─────────────────────────────────────────
 function MascotHeader() {
   return (
     <div className="relative w-full h-full min-h-[220px] flex items-end justify-center overflow-hidden">
@@ -75,7 +69,6 @@ function MascotHeader() {
   );
 }
 
-// ─── Logo header ──────────────────────────────────────────────────────────────
 function LogoHeader() {
   return (
     <div className="relative w-full h-full min-h-[80px] flex items-center justify-center px-10 overflow-hidden">
@@ -89,7 +82,6 @@ function LogoHeader() {
   );
 }
 
-// ─── Step header: solo el badge numérico (sin línea) ────────────────────────
 function StepBadge({ index, accent }: { index: number; accent: string }) {
   return (
     <div className="relative w-full flex items-start pt-1 z-10">
@@ -104,7 +96,6 @@ function StepBadge({ index, accent }: { index: number; accent: string }) {
   );
 }
 
-// ─── Bloque de texto central: Título + separador + Descripción ───────────────
 function StepTextBlock({
   title,
   description,
@@ -154,17 +145,6 @@ function GhostNumber({ index }: { index: number }) {
   );
 }
 
-// ─── Reusable step item builder ───────────────────────────────────────────────
-// Layout propio (sin BentoGridItem) para control total del flexbox:
-//  ┌─────────────────────────┐
-//  │ [Badge]                 │  ← fijo arriba-izquierda
-//  │                         │
-//  │   TÍTULO                │  ← bloque centrado verticalmente
-//  │   ────                  │    con flex-grow
-//  │   Descripción           │
-//  │                         │
-//  │                    [02] │  ← número fantasma, abs. abajo-derecha
-//  └─────────────────────────┘
 function buildStepItem(
   step: { title: string; description: string },
   index: number,
@@ -209,7 +189,7 @@ function buildStepItem(
 // ─── Main component ───────────────────────────────────────────────────────────
 const Process = () => {
   return (
-    <section className="py-24 overflow-hidden relative bg-jb-blue">
+    <section id="Process" className="py-24 overflow-hidden relative bg-jb-blue">
       {/* Puntitos sutiles sobre el fondo azul corporativo */}
       <div
         className="absolute inset-0 opacity-[0.04] pointer-events-none"
@@ -230,8 +210,7 @@ const Process = () => {
           className="text-center mb-14"
         >
           <h3 className="text-4xl md:text-5xl font-bold text-white font-montserrat">
-            Nuestra{" "}
-            <span className="text-jb-orange">Metodología</span>
+            Nuestra <span className="text-jb-orange">Metodología</span>
           </h3>
         </motion.div>
 
