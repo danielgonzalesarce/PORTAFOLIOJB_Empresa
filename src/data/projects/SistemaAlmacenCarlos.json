@@ -1,0 +1,29 @@
+{
+  "id": "inventario-carlos",
+  "name": "Logisync - Sistema de Gestión de Almacenes",
+  "category": "ERP y Logística",
+  "accentColor": "#059669",
+  "shortDescription": "Plataforma WMS para el control exacto de inventario con escáner de códigos de barras móvil, gestión multibodega.",
+  "problem": "¿Sufres de descuadres en el inventario y dependes de ir físicamente al almacén para verificar el stock? El control manual sin vista móvil genera errores, lentitud en los despachos y dificulta la toma de decisiones al no tener la información valorizada en tiempo real.",
+  "solution": "Un sistema de inventario diseñado para almacenes de mayor escala. Destaca por transformar cualquier smartphone en un escáner industrial, permitiendo a los operarios registrar ingresos, despachos y traslados directamente desde los pasillos, manteniendo el dashboard gerencial actualizado al segundo.",
+  "benefits": "- Escaneo de códigos de barras mediante la cámara del celular, eliminando la necesidad de hardware costoso.\n- Arquitectura modular (API REST) 100% compatible y lista para integrarse con sistemas externos de facturación.\n- Control multibodega con trazabilidad de lotes y alertas de stock mínimo.\n- Seguridad avanzada con Autenticación de Dos Pasos para acciones críticas.\n- Reportes automatizados y exportables a Excel y PDF para auditorías contables.",
+  "technologies": [
+    "React",
+    "Spring Boot",
+    "MySQL",
+    "Tailwind CSS",
+    "Google Authenticator"
+  ],
+  "laptopImg": "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776439301/VistaPC_xqzqok.png",
+  "mobileImg": "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776439301/VistaMovil_ngur0e.png",
+  "images": [
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776439301/HistorialMovimientos_src5ou.png",
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776439301/controlAlmacenes_yom8ha.png",
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776439301/salidaProductos_sjhwd9.png",
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776439301/ManejoUsuarios_zeftzu.png",
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776439301/reportes_vv8ovv.png",
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776439301/IngresodeProductos_vj8s0a.png"
+  ],
+  "demoUrl": "https://demo.jbsoluciones.com/logisync",
+  "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+}
