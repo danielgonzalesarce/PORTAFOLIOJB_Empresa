@@ -1,0 +1,30 @@
+{
+  "id": "ecommerce-premium",
+  "name": "E-commerce Premium con Gestión Logística",
+  "category": "E-commerce",
+  "accentColor": "#000000",
+  "shortDescription": "Tienda virtual profesional con cobros automáticos, control de inventario exacto y un panel visual para gestionar tus envíos sin estrés.",
+  "problem": "¿Vendes por redes sociales y te abruma gestionar pagos, stock y envíos a mano? El desorden hace que pierdas ventas, ofrezcas productos agotados o pases horas confirmando transferencias, lo que limita el crecimiento de tu negocio.",
+  "solution": "Una tienda online que vende por ti las 24 horas. Tus clientes compran fácilmente y tú gestionas todo desde un panel centralizado. El sistema descuenta el inventario, confirma los cobros y notifica a tus clientes por correo de forma 100% automática.",
+  "benefits": "- Cobros automáticos y seguros con Mercado Pago.\n- Inventario inteligente: si un cliente aparta un producto y no lo paga a tiempo, el sistema lo devuelve a la tienda por ti.\n- Panel de administración fácil de usar para cambiar los pedidos a 'Enviado' o 'Entregado' con un solo clic.\n- Protege tu negocio: sube fotos como prueba de entrega para tener un respaldo ante cualquier reclamo.\n- Mejora la imagen de tu marca enviando correos automáticos y elegantes a tus clientes en cada paso de su compra.",
+  "technologies": [
+    "React",
+    "Spring Boot",
+    "MySQL",
+    "Tailwind CSS",
+    "Mercado Pago"
+  ],
+  "laptopImg": "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776440851/vistaPC_edq9t1.png",
+  "mobileImg": "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776440851/VistaMovil_a2xf0v.png",
+  "images": [
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776440851/DetaleProducto_de6b65.png",
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776440851/DashboardPrincipal_it3qqq.png",
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776440850/PreguntasFrecuentes_gwpzsn.png",
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776440851/checkout_de_compra_d7dnzn.png",
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776440850/Login_hbfo7g.png",
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776440850/ListadePedidos_evfr2s.png",
+    "https://res.cloudinary.com/ddjjzfbd3/image/upload/v1776440850/DetallesdePedido_es4saa.png"
+  ],
+  "demoUrl": "https://demo.jbsoluciones.com/logisync",
+  "videoUrl": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+}
