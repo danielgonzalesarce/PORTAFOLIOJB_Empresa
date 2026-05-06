@@ -149,9 +149,11 @@ const ProjectDetailModal: React.FC<ProjectDetailModalProps> = ({
       : null;
   };
 
-  const videoEmbedUrl = project.videoUrl
-    ? getYouTubeEmbedUrl(project.videoUrl)
-    : null;
+  // Ocultamos el video temporalmente forzando un 'null'
+  // const videoEmbedUrl = project.videoUrl
+  //   ? getYouTubeEmbedUrl(project.videoUrl)
+  //   : null;
+  const videoEmbedUrl = null;
 
   const hasMedia =
     videoEmbedUrl || (project.images && project.images.length > 0);
